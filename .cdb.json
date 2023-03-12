@@ -1,0 +1,11 @@
+{
+    "type": "MOD",
+    "name": "staminoid",
+    "title": "staminoid",
+    "license": "AGPL-3.0-or-later",
+    "media_license": "CC-BY-SA-4.0",
+    "repo": "https://github.com/fluxionary/minetest-staminoid.git",
+    "website": "https://github.com/fluxionary/minetest-staminoid",
+    "issue_tracker": "https://github.com/fluxionary/minetest-staminoid/issues",
+    "short_description": "TODO: write a description"
+}

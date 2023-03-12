@@ -1,0 +1,56 @@
+[general]
+
+staminoid:default_stamina_max (default max stamina) float 160 0
+
+staminoid:default_stamina_regen (default stamina regen) float 1 0
+
+# check actions and apply effects every N seconds
+staminoid:stamina_update_tick (stamina update tick) float 0.09 0.09
+
+# recover stamina every N seconds
+staminoid:stamina_regen_tick (stamina regen tick) float 0.09 0.09
+
+# how long since the last action until stamina regen starts
+staminoid:stamina_regen_cooldown (stamina regen cooldown) float 1 0
+
+[sprinting]
+
+staminoid:sprint (enable sprinting) bool true
+
+# show particles at a player's feet when sprinting
+staminoid:sprint_particles (enable sprint particles) bool true
+
+# how much faster a player can run if satiated
+staminoid:sprint_speed (sprint speed boost) float 1.8 0 2
+
+# how much higher a player can jump if satiated
+staminoid:sprint_jump (sprint jump boost) float 1.1 0 2
+
+# enable sprinting when player has fast privilege
+staminoid:sprint_with_fast (sprint with fast) bool false
+
+[exhaustion]
+
+# minimum horizontal speed to drain stamina for moving
+staminoid:exhaust_move_min (min movement speed for exhaustion) float 4.1 0
+
+#
+staminoid:exhaust_move_scale (move exhaustion scale) float 1 0
+
+# values above 1 create more exhaustion in travelling a distance the faster you're going
+staminoid:exhaust_move_gamma (move exhaustion gamma) float 1.333333333333 0.1
+
+# stamina drain for jumping
+staminoid:exhaust_jump (jump exhaustion) float 5
+
+# stamina drain for digging a node
+staminoid:exhaust_dig (dig exhaustion) float 3
+
+# stamina drain for placing a node
+staminoid:exhaust_place (place exhaustion) float 1
+
+# stamina drain for punching
+staminoid:exhaust_punch (punch exhaustion) float 40
+
+# stamina drain for crafting
+staminoid:exhaust_craft (craft exhaustion) float 20
