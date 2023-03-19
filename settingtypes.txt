@@ -29,6 +29,9 @@ staminoid:sprint_jump (sprint jump boost) float 1.1 0 2
 # enable sprinting when player has fast privilege
 staminoid:sprint_with_fast (sprint with fast) bool false
 
+#
+staminoid:sprint_acceleration () float 2 0.01
+
 [exhaustion]
 
 # minimum horizontal speed to drain stamina for moving
