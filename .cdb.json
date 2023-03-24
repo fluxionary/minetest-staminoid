@@ -7,5 +7,5 @@
     "repo": "https://github.com/fluxionary/minetest-staminoid.git",
     "website": "https://github.com/fluxionary/minetest-staminoid",
     "issue_tracker": "https://github.com/fluxionary/minetest-staminoid/issues",
-    "short_description": "TODO: write a description"
+    "short_description": "an API for managing stamina and exhaustion"
 }

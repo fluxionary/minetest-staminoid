@@ -9,11 +9,9 @@ staminoid = fmod.create()
 staminoid.dofile("api")
 staminoid.dofile("hud")
 staminoid.dofile("internal")
-staminoid.dofile("monoids")
 
 staminoid.dofile("callbacks")
 staminoid.dofile("initialize")
-staminoid.dofile("regen")
 staminoid.dofile("update")
 
 staminoid.dofile("compat", "init")

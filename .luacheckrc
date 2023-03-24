@@ -652,8 +652,10 @@ stds.staminoid = {
 	read_globals = {
 		"fmod",
 		"futil",
-		"player_monoids",
-		"persistent_monoids",
 		"hb",
+		"persistent_monoids",
+		"player_attributes",
+		"status_effects",
+		"player_monoids",
 	},
 }
