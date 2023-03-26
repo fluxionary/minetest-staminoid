@@ -27,15 +27,15 @@ staminoid:sprint_speed (sprint speed boost) float 1.8 0 2
 staminoid:sprint_jump (sprint jump boost) float 1.1 0 2
 
 # enable sprinting when player has fast privilege
-staminoid:sprint_with_fast (sprint with fast) bool false
+staminoid:sprint_with_fast (sprint with fast) bool true
 
 #
 staminoid:sprint_acceleration () float 2 0.01
 
 [exhaustion]
 
-# minimum horizontal speed to drain stamina for moving
-staminoid:exhaust_move_min (min movement speed for exhaustion) float 4.1 0
+# minimum horizontal speed (relative to movement_speed_walk) to drain stamina for moving
+staminoid:exhaust_move_min (min movement speed for exhaustion) float 1.1 0
 
 #
 staminoid:exhaust_move_scale (move exhaustion scale) float 1 0
@@ -57,3 +57,11 @@ staminoid:exhaust_punch (punch exhaustion) float 40
 
 # stamina drain for crafting
 staminoid:exhaust_craft (craft exhaustion) float 20
+
+[craft_bungling]
+
+# if enabled, an exhausted player may "bungle" a craft recipe, resulting in no item.
+staminoid:craft_bungling_enabled (craft bungling) bool false
+
+# chance that the recipe is bungled
+staminoid:craft_bungling_chance (craft bungling chance) float 0.25 0 1

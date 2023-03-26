@@ -4,8 +4,7 @@ local s = staminoid.settings
 
 function staminoid.on_craft(itemstack, player, old_craft_grid, craft_inv)
 	local remaining_stamina = staminoid.exhaust(player, s.exhaust_craft, "craft")
-	if remaining_stamina == 0 then
-		-- TODO create a "chance" that this will happen, and possibly disable it by default
+	if remaining_stamina == 0 and s.craft_bungling_enabled and math.random() < s.craft_bungling_chance then
 		local player_name = player:get_player_name()
 		staminoid.log(
 			"action",
@@ -23,4 +22,16 @@ end
 
 minetest.register_on_craft(function(...)
 	return staminoid.on_craft(...)
+end)
+
+minetest.register_on_placenode(function(pos, oldnode, player, ext)
+	staminoid.exhaust(player, s.exhaust_place, "place")
+end)
+
+minetest.register_on_dignode(function(pos, oldnode, player, ext)
+	staminoid.exhaust(player, s.exhaust_dig, "dig")
+end)
+
+minetest.register_on_punchplayer(function(player, hitter, time_from_last_punch, tool_capabilities, dir, damage)
+	staminoid.exhaust(hitter, s.exhaust_punch, "punch")
 end)

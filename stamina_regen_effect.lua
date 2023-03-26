@@ -10,11 +10,8 @@ staminoid.stamina_regen_effect = status_effects.register_effect("stamina_regen_e
 	on_step = function(self, player, value, dtime, now)
 		local last_exhaust_timestamp = staminoid.get_last_exhaust_timestamp(player)
 		if last_exhaust_timestamp + (s.stamina_regen_cooldown * 1e6) <= now then
-			return staminoid.set_stamina(
-				player,
-				staminoid.get_stamina(player) + staminoid.get_stamina_regen(player),
-				"regen"
-			)
+			local stamina = staminoid.stamina_attribute:get(player) + value
+			return staminoid.stamina_attribute:set(player, stamina, "regen")
 		end
 	end,
 })

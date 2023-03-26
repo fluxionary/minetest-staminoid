@@ -21,6 +21,15 @@ staminoid.register_hud({
 		hb.change_hudbar(player, identifier, stamina, nil)
 	end,
 	on_stamina_max_change = function(player, stamina_max)
-		hb.change_hudbar(player, identifier, nil, stamina_max)
+		-- TODO: https://codeberg.org/Wuzzy/minetest_hudbars/issues/4
+		local state = hb.get_hudtable(identifier).hudstate[player:get_player_name()]
+		-- local state = hb.get_hudbar_state(player, identifier)
+		if not state then
+			return
+		elseif state.value > stamina_max then
+			hb.change_hudbar(player, identifier, stamina_max, stamina_max)
+		else
+			hb.change_hudbar(player, identifier, nil, stamina_max)
+		end
 	end,
 })
