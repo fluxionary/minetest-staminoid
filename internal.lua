@@ -12,9 +12,9 @@ function staminoid.set_sprinting(player, can_sprint)
 			sprint_start_by_player_name[player_name] = now
 			start = now
 		end
-		local sprint_scale = math.tanh((now - start) / staminoid.settings.sprint_acceleration)
+		local sprint_scale = math.tanh((now - start) * staminoid.settings.sprint_acceleration)
 
-		player_monoids.speed:add_change(player, sprint_scale * s.sprint_speed, "staminoid:sprinting")
+		player_monoids.speed:add_change(player, 1 + (sprint_scale * (s.sprint_speed - 1)), "staminoid:sprinting")
 		player_monoids.jump:add_change(player, s.sprint_jump, "staminoid:sprinting")
 	else
 		sprint_start_by_player_name[player_name] = nil
