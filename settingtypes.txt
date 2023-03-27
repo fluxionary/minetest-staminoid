@@ -8,7 +8,7 @@ staminoid:default_stamina_regen (default stamina regen) float 1 0
 staminoid:stamina_update_tick (stamina update tick) float 0.09 0.09
 
 # recover stamina every N seconds
-staminoid:stamina_regen_tick (stamina regen tick) float 0.09 0.09
+staminoid:stamina_regen_tick (stamina regen tick) float 1 0.01
 
 # how long since the last action until stamina regen starts
 staminoid:stamina_regen_cooldown (stamina regen cooldown) float 1 0
