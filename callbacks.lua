@@ -33,5 +33,10 @@ minetest.register_on_dignode(function(pos, oldnode, player, ext)
 end)
 
 minetest.register_on_punchplayer(function(player, hitter, time_from_last_punch, tool_capabilities, dir, damage)
-	staminoid.exhaust(hitter, s.exhaust_punch, "punch")
+	if minetest.is_player(player) then
+		staminoid.exhaust(player, s.exhaust_punch, "punch")
+	end
+	if minetest.is_player(hitter) then
+		staminoid.exhaust(hitter, s.exhaust_punch, "punch")
+	end
 end)
