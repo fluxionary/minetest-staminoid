@@ -5,5 +5,5 @@ a different sort of stamina mechanic.
 stamina controls whether a player can sprint or get a speed boost/penalty for various other actions.
 a player's stamina is depleted when doing actions and sprinting, and gradually recovers over time.
 
-the maximum amount of stamina a player has, and the recovery rate, are controlled by monoids, so that other mods
-can change them.
+the maximum amount of stamina a player has, and the recovery rate, can be modified by multiple mods through the
+provided API.
