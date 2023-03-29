@@ -35,7 +35,7 @@ futil.register_globalstep({
 			local movement_exhaust
 			local exhaust_at = s.exhaust_move_min * movement_speed_walk
 			if is_moving and horizontal_speed > exhaust_at and not has_fast then
-				movement_exhaust = s.exhaust_move_scale * ((horizontal_speed - exhaust_at) ^ s.exhaust_move_gamma)
+				movement_exhaust = s.exhaust_move_scale * ((horizontal_speed / exhaust_at) ^ s.exhaust_move_gamma)
 				staminoid.exhaust(player, movement_exhaust, "movement")
 			else
 				movement_exhaust = 0

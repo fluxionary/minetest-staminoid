@@ -38,7 +38,7 @@ staminoid:sprint_acceleration () float 1 0.01
 staminoid:exhaust_move_min (min movement speed for exhaustion) float 1.1 0
 
 #
-staminoid:exhaust_move_scale (move exhaustion scale) float 1 0
+staminoid:exhaust_move_scale (move exhaustion scale) float 0.25 0
 
 # values above 1 create more exhaustion in travelling a distance the faster you're going
 staminoid:exhaust_move_gamma (move exhaustion gamma) float 1.333333333333 0.1
