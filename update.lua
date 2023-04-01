@@ -55,12 +55,13 @@ futil.register_globalstep({
 				staminoid.set_sprinting(player, can_sprint)
 			end
 
-			if not has_fast then
-				staminoid.set_reduced_speed(player, current_stamina <= movement_exhaust)
-				staminoid.set_reduced_jump(player, current_stamina <= s.exhaust_jump)
+			if current_stamina == 0 then
+				std_effects.exhaustion:add(player, "staminoid", 2)
+			elseif current_stamina <= s.exhaustion_stamina_level then
+				std_effects.exhaustion:add(player, "staminoid", 1)
+			else
+				std_effects.exhaustion:clear(player, "staminoid")
 			end
-			staminoid.set_reduced_dig(player, current_stamina <= s.exhaust_dig)
-			staminoid.set_reduced_punch(player, current_stamina <= s.exhaust_punch)
 		end
 	end,
 })

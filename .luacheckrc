@@ -656,6 +656,7 @@ stds.staminoid = {
 		"persistent_monoids",
 		"player_attributes",
 		"status_effects",
+		"std_effects",
 		"player_monoids",
 	},
 }

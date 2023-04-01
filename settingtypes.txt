@@ -34,6 +34,9 @@ staminoid:sprint_acceleration () float 1 0.01
 
 [exhaustion]
 
+# exhaust player when stamina is below this level
+staminoid:exhaustion_stamina_level (stamina level for exhaustion effect) float 5 0
+
 # minimum horizontal speed (relative to movement_speed_walk) to drain stamina for moving
 staminoid:exhaust_move_min (min movement speed for exhaustion) float 1.1 0
 
