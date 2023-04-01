@@ -32,6 +32,10 @@ minetest.register_on_dignode(function(pos, oldnode, player, ext)
 	staminoid.exhaust(player, s.exhaust_dig, "dig")
 end)
 
+minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
+	staminoid.exhaust(puncher, s.exhaust_punch, "punch")
+end)
+
 minetest.register_on_punchplayer(function(player, hitter, time_from_last_punch, tool_capabilities, dir, damage)
 	if minetest.is_player(player) then
 		staminoid.exhaust(player, s.exhaust_punch, "punch")
@@ -39,4 +43,8 @@ minetest.register_on_punchplayer(function(player, hitter, time_from_last_punch, 
 	if minetest.is_player(hitter) then
 		staminoid.exhaust(hitter, s.exhaust_punch, "punch")
 	end
+end)
+
+minetest.register_on_respawnplayer(function(player)
+	staminoid.stamina_attribute:set(player, 0)
 end)

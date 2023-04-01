@@ -47,16 +47,16 @@ staminoid:exhaust_move_scale (move exhaustion scale) float 0.25 0
 staminoid:exhaust_move_gamma (move exhaustion gamma) float 1.333333333333 0.1
 
 # stamina drain for jumping
-staminoid:exhaust_jump (jump exhaustion) float 2
+staminoid:exhaust_jump (jump exhaustion) float 1
 
 # stamina drain for digging a node
-staminoid:exhaust_dig (dig exhaustion) float 2
+staminoid:exhaust_dig (dig exhaustion) float 1
 
 # stamina drain for placing a node
 staminoid:exhaust_place (place exhaustion) float 1
 
 # stamina drain for punching
-staminoid:exhaust_punch (punch exhaustion) float 2
+staminoid:exhaust_punch (punch exhaustion) float 1
 
 # stamina drain for crafting
 staminoid:exhaust_craft (craft exhaustion) float 1
