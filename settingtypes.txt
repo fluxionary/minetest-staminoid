@@ -15,7 +15,7 @@ staminoid:stamina_regen_cooldown (stamina regen cooldown) float 1 0
 
 [sprinting]
 
-staminoid:sprint (enable sprinting) bool true
+staminoid:sprint_enabled (enable sprinting) bool true
 
 # show particles at a player's feet when sprinting
 staminoid:sprint_particles (enable sprint particles) bool true
@@ -30,7 +30,7 @@ staminoid:sprint_jump (sprint jump boost) float 1.1 0 2
 staminoid:sprint_with_fast (sprint with fast) bool true
 
 #
-staminoid:sprint_acceleration () float 1 0.01
+staminoid:sprint_acceleration () float 1.5 0.01
 
 [exhaustion]
 
