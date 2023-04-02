@@ -24,16 +24,25 @@ minetest.register_on_craft(function(...)
 	return staminoid.on_craft(...)
 end)
 
-minetest.register_on_placenode(function(pos, oldnode, player, ext)
+minetest.register_on_placenode(function(pos, oldnode, player)
 	staminoid.exhaust(player, s.exhaust_place, "place")
 end)
 
-minetest.register_on_dignode(function(pos, oldnode, player, ext)
-	staminoid.exhaust(player, s.exhaust_dig, "dig")
-end)
-
-minetest.register_on_punchnode(function(pos, node, puncher, pointed_thing)
-	staminoid.exhaust(puncher, s.exhaust_punch, "punch")
+minetest.register_on_dignode(function(pos, oldnode, player)
+	local wielded_item = player:get_wielded_item()
+	local node_groups = ItemStack(oldnode.name):get_definition().groups or {}
+	local dig_params =
+		minetest.get_dig_params(node_groups, wielded_item:get_tool_capabilities(), wielded_item:get_wear())
+	if not dig_params.diggable then
+		local inv = player:get_inventory()
+		local hand = inv:get_stack("hand", 1)
+		dig_params = minetest.get_dig_params(node_groups, hand:get_tool_capabilities())
+	end
+	if dig_params.diggable then
+		staminoid.exhaust(player, s.exhaust_dig * dig_params.time, "dig")
+	else
+		staminoid.exhaust(player, s.exhaust_dig, "dig")
+	end
 end)
 
 minetest.register_on_punchplayer(function(player, hitter, time_from_last_punch, tool_capabilities, dir, damage)
