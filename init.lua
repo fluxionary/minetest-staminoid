@@ -16,6 +16,6 @@ staminoid.dofile("api")
 
 staminoid.dofile("hud")
 staminoid.dofile("callbacks")
-staminoid.dofile("update")
+staminoid.dofile("globalstep")
 
 staminoid.dofile("compat", "init")
