@@ -1,7 +1,7 @@
 local S = staminoid.S
 local s = staminoid.settings
 
-local identifier = "staminoid:stamina"
+local identifier = "staminoid"
 
 hb.register_hudbar(
 	identifier,
