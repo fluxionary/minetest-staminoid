@@ -81,12 +81,11 @@ local function set_sprinting(player, current_stamina, movement_exhaust)
 	local has_fast = minetest.check_player_privs(player, { fast = true })
 	local can_sprint = (
 		controls.aux1
-			and not player:get_attach()
-			and (s.sprint_with_fast or not has_fast)
-			and current_stamina > movement_exhaust
-			and futil.get_horizontal_speed(player) >= (movement_speed_walk / 2)
-			and s.sprint_in_water
-		or not is_in_water(player)
+		and not player:get_attach()
+		and (s.sprint_with_fast or not has_fast)
+		and current_stamina > movement_exhaust
+		and futil.get_horizontal_speed(player) >= (movement_speed_walk / 2)
+		and (s.sprint_in_water or not is_in_water(player))
 	)
 
 	if can_sprint then

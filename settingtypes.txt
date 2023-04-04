@@ -66,8 +66,10 @@ staminoid:exhaust_craft (craft exhaustion) float 1
 
 [craft_bungling]
 
-# if enabled, an exhausted player may "bungle" a craft recipe, resulting in no item.
-staminoid:craft_bungling_enabled (craft bungling) bool false
+# bungle: there is a chance the item is lost
+# fumble: item is dropped on the floor somewhere near the player
+# none: no special action (crafting proceeds as normal)
+staminoid:exhausted_craft_behavior (behavior when crafting while exhausted) enum fumble bungle,fumble,none
 
 # chance that the recipe is bungled
 staminoid:craft_bungling_chance (craft bungling chance) float 0.25 0 1
