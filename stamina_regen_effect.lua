@@ -7,8 +7,9 @@ staminoid.stamina_regen_effect = status_effects.register_effect("stamina_regen_e
 	end,
 	step_every = 0.09,
 	on_step = function(self, player, value, dtime, now)
+		local controls = player:get_player_control()
 		local last_exhaust_timestamp = staminoid.get_last_exhaust_timestamp(player)
-		if last_exhaust_timestamp + (s.stamina_regen_cooldown * 1e6) <= now then
+		if not controls.aux1 and last_exhaust_timestamp + (s.stamina_regen_cooldown * 1e6) <= now then
 			local stamina = staminoid.stamina_attribute:get(player) + (value * dtime / s.stamina_regen_tick)
 			return staminoid.stamina_attribute:set(player, stamina, "regen")
 		end
