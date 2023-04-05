@@ -1,6 +1,6 @@
 [general]
 
-staminoid:default_stamina_max (default max stamina) float 40 0
+staminoid:default_stamina_max (default max stamina) float 30 0
 
 staminoid:default_stamina_regen (default stamina regen) float 1 0
 
