@@ -14,8 +14,8 @@ local last_exhaust_climb_by_player_name = {}
 local function get_jump_duration(player)
 	local jump_multiplier = player_monoids.jump:value(player)
 	local gravity_multiplier = player_monoids.gravity:value(player)
-	-- us
-	return 1e6 * 2 * movement_speed_jump * jump_multiplier / (movement_gravity * gravity_multiplier)
+	-- us, only count duration to reach the highest point (e.g. jumping up a hill)
+	return 1e6 * movement_speed_jump * jump_multiplier / (movement_gravity * gravity_multiplier)
 end
 
 local function exhaust_climbing(player, now)
