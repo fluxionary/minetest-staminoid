@@ -29,15 +29,24 @@ function staminoid.on_craft(itemstack, player, old_craft_grid, craft_inv)
 	end
 end
 
-minetest.register_on_craft(function(...)
-	return staminoid.on_craft(...)
+minetest.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv)
+	if not minetest.is_player(player) then
+		return
+	end
+	return staminoid.on_craft(itemstack, player, old_craft_grid, craft_inv)
 end)
 
 minetest.register_on_placenode(function(pos, oldnode, player)
+	if not minetest.is_player(player) then
+		return
+	end
 	staminoid.exhaust(player, s.exhaust_place, "place")
 end)
 
 minetest.register_on_dignode(function(pos, oldnode, player)
+	if not minetest.is_player(player) then
+		return
+	end
 	local wielded_item = player:get_wielded_item()
 	local node_groups = ItemStack(oldnode.name):get_definition().groups or {}
 	local dig_params =
