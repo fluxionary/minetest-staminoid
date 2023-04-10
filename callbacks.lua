@@ -47,8 +47,11 @@ minetest.register_on_dignode(function(pos, oldnode, player)
 	if not minetest.is_player(player) then
 		return
 	end
-	local wielded_item = player:get_wielded_item()
 	local node_groups = ItemStack(oldnode.name):get_definition().groups or {}
+	if (node_groups.dig_immediate or 0) > 0 then
+		return
+	end
+	local wielded_item = player:get_wielded_item()
 	local dig_params =
 		minetest.get_dig_params(node_groups, wielded_item:get_tool_capabilities(), wielded_item:get_wear())
 	if not dig_params.diggable then
