@@ -1,5 +1,6 @@
-staminoid.registered_on_exhaust_players = {}
 staminoid.last_exhaust_timestamp_by_player_name = {} -- don't persist this across reboots7
+staminoid.registered_on_exhaust_players = {}
+staminoid.registered_on_stamina_ticks = {}
 
 function staminoid.register_on_exhaust_player(callback)
 	table.insert(staminoid.registered_on_exhaust_players, callback)
@@ -22,4 +23,8 @@ end
 
 function staminoid.get_last_exhaust_timestamp(player)
 	return staminoid.last_exhaust_timestamp_by_player_name[player:get_player_name()] or 0
+end
+
+function staminoid.register_on_stamina_tick(callback)
+	table.insert(staminoid.registered_on_stamina_ticks, callback)
 end

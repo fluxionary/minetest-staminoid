@@ -6,8 +6,7 @@ local sprint_start_by_player_name = {}
 staminoid.sprinting_effect = status_effects.register_effect("sprinting", {
 	description = S("sprinting"),
 	fold = function(self, values_by_key)
-		-- TODO: probably this should be refactored into futil
-		return std_effects.util.not_blocked(values_by_key)
+		return status_effects.fold.not_blocked(values_by_key)
 	end,
 	apply = function(self, player, value, old_value)
 		local player_name = player:get_player_name()

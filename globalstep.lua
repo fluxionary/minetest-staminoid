@@ -95,16 +95,6 @@ local function set_sprinting(player, current_stamina, movement_exhaust)
 	end
 end
 
-local function set_exhaustion(player, current_stamina)
-	if current_stamina < 1 then
-		std_effects.exhaustion:add(player, "staminoid", 2)
-	elseif current_stamina <= s.exhaustion_stamina_level then
-		std_effects.exhaustion:add(player, "staminoid", 1)
-	else
-		std_effects.exhaustion:clear(player, "staminoid")
-	end
-end
-
 local function update(player, now)
 	if is_climbing(player) then
 		exhaust_climbing(player, now)
@@ -122,8 +112,9 @@ local function update(player, now)
 		set_sprinting(player, current_stamina, movement_exhaust)
 	end
 
-	-- update exhaustion effect
-	set_exhaustion(player, current_stamina)
+	for i = 1, #staminoid.registered_on_stamina_ticks do
+		staminoid.registered_on_stamina_ticks[i](player, current_stamina, now)
+	end
 end
 
 local last_timestamp
