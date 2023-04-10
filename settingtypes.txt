@@ -53,7 +53,7 @@ staminoid:exhaust_move_gamma (move exhaustion gamma) float 1.333333333333 0.1
 staminoid:exhaust_jump (jump exhaustion) float 2
 
 # stamina drain scale for digging a node
-staminoid:exhaust_dig (dig exhaustion) float 8
+staminoid:exhaust_dig (dig exhaustion) float 4
 
 # stamina drain for placing a node
 staminoid:exhaust_place (place exhaustion) float 1
