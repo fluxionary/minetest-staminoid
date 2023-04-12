@@ -1,9 +1,17 @@
-local sum_values = player_attributes.util.sum_values
 local s = staminoid.settings
 
 staminoid.stamina_regen_effect = status_effects.register_effect("stamina_regen_effect", {
 	fold = function(self, t)
-		return sum_values(t, s.default_stamina_regen)
+		local value = s.default_stamina_regen
+		local multiplier = 1
+		for k, v in pairs(t) do
+			if type(v) == "number" then
+				value = value + v
+			elseif type(v) == "table" and v.multiplier then
+				multiplier = multiplier * v.multiplier
+			end
+		end
+		return value * multiplier
 	end,
 	step_every = 0.09,
 	on_step = function(self, player, value, dtime, now)
