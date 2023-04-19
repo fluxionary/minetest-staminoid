@@ -22,9 +22,19 @@ function staminoid.on_craft(itemstack, player, old_craft_grid, craft_inv)
 			local pos = vector.add(player:get_pos(), futil.random_unit_vector())
 			local obj = minetest.add_item(pos, itemstack)
 			if obj then
-				obj:add_velocity(futil.random_unit_vector())
+				obj:add_velocity(2 * futil.random_unit_vector())
 				return ItemStack()
 			end
+		elseif s.exhausted_craft_behavior == "fumble_ingredients" then
+			for _, item in ipairs(old_craft_grid) do
+				local pos = vector.add(player:get_pos(), futil.random_unit_vector())
+				local obj = minetest.add_item(pos, item)
+				if obj then
+					obj:add_velocity(2 * futil.random_unit_vector())
+				end
+			end
+			craft_inv:set_list("craft", {})
+			return ItemStack()
 		end
 	end
 end

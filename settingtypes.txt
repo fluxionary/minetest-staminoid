@@ -68,8 +68,9 @@ staminoid:exhaust_craft (craft exhaustion) float 1
 
 # bungle: there is a chance the item is lost
 # fumble: item is dropped on the floor somewhere near the player
+# fumble_ingredients: contents of the crafting grid are dropped on the ground
 # none: no special action (crafting proceeds as normal)
-staminoid:exhausted_craft_behavior (behavior when crafting while exhausted) enum fumble bungle,fumble,none
+staminoid:exhausted_craft_behavior (behavior when crafting while exhausted) enum fumble_ingredients bungle,fumble,fumble_ingredients,none
 
 # chance that the recipe is bungled
 staminoid:craft_bungling_chance (craft bungling chance) float 0.25 0 1
