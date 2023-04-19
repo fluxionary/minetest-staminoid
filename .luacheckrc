@@ -648,15 +648,18 @@ stds.minetest = {
 stds.staminoid = {
 	globals = {
 		"staminoid",
+		farming = {fields = {"place_seed"}},
 	},
 	read_globals = {
 		"fmod",
 		"futil",
+
+		"exhaustion_effect",
+		"farming",
 		"hb",
 		"persistent_monoids",
 		"player_attributes",
 		"status_effects",
 		"player_monoids",
-		"exhaustion_effect",
 	},
 }
