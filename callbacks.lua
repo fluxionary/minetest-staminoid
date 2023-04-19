@@ -3,7 +3,7 @@ local S = staminoid.S
 local s = staminoid.settings
 
 function staminoid.on_craft(itemstack, player, old_craft_grid, craft_inv)
-	local remaining_stamina = staminoid.exhaust(player, s.exhaust_craft, "craft")
+	local remaining_stamina = staminoid.exhaust(player, s.exhaust_craft, { type = "craft", item = itemstack })
 	if remaining_stamina == 0 then
 		local player_name = player:get_player_name()
 		if s.exhausted_craft_behavior == "bungle" and math.random() < s.craft_bungling_chance then
@@ -50,7 +50,7 @@ minetest.register_on_placenode(function(pos, oldnode, player)
 	if not minetest.is_player(player) then
 		return
 	end
-	staminoid.exhaust(player, s.exhaust_place, "place")
+	staminoid.exhaust(player, s.exhaust_place, { type = "place", pos = pos, node = oldnode })
 end)
 
 minetest.register_on_dignode(function(pos, oldnode, player)
@@ -72,16 +72,16 @@ minetest.register_on_dignode(function(pos, oldnode, player)
 	if dig_params.diggable then
 		staminoid.exhaust(player, s.exhaust_dig * dig_params.time, "dig")
 	else
-		staminoid.exhaust(player, s.exhaust_dig, "dig")
+		staminoid.exhaust(player, s.exhaust_dig, { type = "dig", pos = pos, node = oldnode })
 	end
 end)
 
 minetest.register_on_punchplayer(function(player, hitter, time_from_last_punch, tool_capabilities, dir, damage)
 	if minetest.is_player(player) then
-		staminoid.exhaust(player, s.exhaust_punch, "punch")
+		staminoid.exhaust(player, s.exhaust_punch, { type = "punched", hitter = hitter })
 	end
 	if minetest.is_player(hitter) then
-		staminoid.exhaust(hitter, s.exhaust_punch, "punch")
+		staminoid.exhaust(hitter, s.exhaust_punch, { type = "punch", target = player })
 	end
 end)
 
