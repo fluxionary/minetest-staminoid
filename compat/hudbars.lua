@@ -42,7 +42,9 @@ hb.register_hudbar(
 	{ bar = make_bar(s.default_stamina_max, s.default_stamina_max) },
 	0,
 	s.default_stamina_max,
-	false
+	false,
+	nil,
+	{ format_value = "%.1f", format_max_value = "%.1f" }
 )
 
 --[[
