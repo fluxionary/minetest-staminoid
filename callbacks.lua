@@ -2,39 +2,47 @@ local f = string.format
 local S = staminoid.S
 local s = staminoid.settings
 
+function staminoid.do_bungle_craft(itemstack, player, old_craft_grid, craft_inv)
+	local player_name = player:get_player_name()
+
+	staminoid.log(
+		"action",
+		f("%s bungles crafting %q from %s", player_name, itemstack:to_string(), dump(old_craft_grid):gsub("%s+", "%s"))
+	)
+	minetest.chat_send_player(player_name, S("you are too tired to craft, and bungle the recipe"))
+	return ItemStack()
+end
+
+function staminoid.do_fuble_craft(itemstack, player, old_craft_grid, craft_inv)
+	local pos = vector.add(player:get_pos(), futil.random_unit_vector())
+	local obj = minetest.add_item(pos, itemstack)
+	if obj then
+		obj:add_velocity(2 * futil.random_unit_vector())
+		return ItemStack()
+	end
+end
+
+function staminoid.do_fumble_craft_ingredients(itemstack, player, old_craft_grid, craft_inv)
+	for _, item in ipairs(old_craft_grid) do
+		local pos = vector.add(player:get_pos(), futil.random_unit_vector())
+		local obj = minetest.add_item(pos, item)
+		if obj then
+			obj:add_velocity(2 * futil.random_unit_vector())
+		end
+	end
+	craft_inv:set_list("craft", {})
+	return ItemStack()
+end
+
 function staminoid.on_craft(itemstack, player, old_craft_grid, craft_inv)
 	local remaining_stamina = staminoid.exhaust(player, s.exhaust_craft, { type = "craft", item = itemstack })
 	if remaining_stamina == 0 then
-		local player_name = player:get_player_name()
 		if s.exhausted_craft_behavior == "bungle" and math.random() < s.craft_bungling_chance then
-			staminoid.log(
-				"action",
-				f(
-					"%s bungles crafting %q from %s",
-					player_name,
-					itemstack:to_string(),
-					dump(old_craft_grid):gsub("%s+", "%s")
-				)
-			)
-			minetest.chat_send_player(player_name, S("you are too tired to craft, and bungle the recipe"))
-			return ItemStack()
+			return staminoid.do_bungle_craft(itemstack, player, old_craft_grid, craft_inv)
 		elseif s.exhausted_craft_behavior == "fumble" then
-			local pos = vector.add(player:get_pos(), futil.random_unit_vector())
-			local obj = minetest.add_item(pos, itemstack)
-			if obj then
-				obj:add_velocity(2 * futil.random_unit_vector())
-				return ItemStack()
-			end
+			return staminoid.do_fuble_craft(itemstack, player, old_craft_grid, craft_inv)
 		elseif s.exhausted_craft_behavior == "fumble_ingredients" then
-			for _, item in ipairs(old_craft_grid) do
-				local pos = vector.add(player:get_pos(), futil.random_unit_vector())
-				local obj = minetest.add_item(pos, item)
-				if obj then
-					obj:add_velocity(2 * futil.random_unit_vector())
-				end
-			end
-			craft_inv:set_list("craft", {})
-			return ItemStack()
+			return staminoid.do_fumble_craft_ingredients(itemstack, player, old_craft_grid, craft_inv)
 		end
 	end
 end
