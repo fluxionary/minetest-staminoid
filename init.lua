@@ -4,7 +4,7 @@ for _, mod in ipairs({ "hbsprint", "real_stamina", "stamina" }) do
 	end
 end
 
-futil.check_version({ year = 2023, month = 3, day = 24 })
+futil.check_version({ year = 2023, month = 11, day = 1 }) -- is_player
 
 staminoid = fmod.create()
 

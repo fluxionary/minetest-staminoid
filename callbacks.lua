@@ -48,21 +48,21 @@ function staminoid.on_craft(itemstack, player, old_craft_grid, craft_inv)
 end
 
 minetest.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv)
-	if not minetest.is_player(player) then
+	if not futil.is_player(player) then
 		return
 	end
 	return staminoid.on_craft(itemstack, player, old_craft_grid, craft_inv)
 end)
 
 minetest.register_on_placenode(function(pos, oldnode, player)
-	if not minetest.is_player(player) then
+	if not futil.is_player(player) then
 		return
 	end
 	staminoid.exhaust(player, s.exhaust_place, { type = "place", pos = pos, node = oldnode })
 end)
 
 minetest.register_on_dignode(function(pos, oldnode, player)
-	if not minetest.is_player(player) then
+	if not futil.is_player(player) then
 		return
 	end
 	local node_groups = ItemStack(oldnode.name):get_definition().groups or {}
@@ -85,10 +85,10 @@ minetest.register_on_dignode(function(pos, oldnode, player)
 end)
 
 minetest.register_on_punchplayer(function(player, hitter, time_from_last_punch, tool_capabilities, dir, damage)
-	if minetest.is_player(player) then
+	if futil.is_player(player) then
 		staminoid.exhaust(player, s.exhaust_punch, { type = "punched", hitter = hitter })
 	end
-	if minetest.is_player(hitter) then
+	if futil.is_player(hitter) then
 		staminoid.exhaust(hitter, s.exhaust_punch, { type = "punch", target = player })
 	end
 end)
