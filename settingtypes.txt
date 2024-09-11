@@ -1,68 +1,68 @@
 [general]
 
-staminoid:default_stamina_max (default max stamina) float 30 0
+staminoid.default_stamina_max (default max stamina) float 30 0
 
-staminoid:default_stamina_regen (default stamina regen) float 1 0
+staminoid.default_stamina_regen (default stamina regen) float 1 0
 
 # check actions and apply effects every N seconds
-staminoid:stamina_update_tick (stamina update tick) float 0.09 0.09
+staminoid.stamina_update_tick (stamina update tick) float 0.09 0.09
 
 # stamina regen period
-staminoid:stamina_regen_tick (stamina regen tick) float .66666 0.01
+staminoid.stamina_regen_tick (stamina regen tick) float .66666 0.01
 
 # how long since the last action until stamina regen starts
-staminoid:stamina_regen_cooldown (stamina regen cooldown) float 1 0
+staminoid.stamina_regen_cooldown (stamina regen cooldown) float 1 0
 
 [sprinting]
 
-staminoid:sprint_enabled (enable sprinting) bool true
+staminoid.sprint_enabled (enable sprinting) bool true
 
 # show particles at a player's feet when sprinting
-staminoid:sprint_particles (enable sprint particles) bool true
+staminoid.sprint_particles (enable sprint particles) bool true
 
 # how much faster a player can run if satiated
-staminoid:sprint_speed (sprint speed boost) float 1.8 0 2
+staminoid.sprint_speed (sprint speed boost) float 1.8 0 2
 
 # how much higher a player can jump if satiated
-staminoid:sprint_jump (sprint jump boost) float 1.1 0 2
+staminoid.sprint_jump (sprint jump boost) float 1.1 0 2
 
 # enable sprinting when player has fast privilege
-staminoid:sprint_with_fast (sprint with fast) bool true
+staminoid.sprint_with_fast (sprint with fast) bool true
 
 # if set to true, allow sprinting while in water
-staminoid:sprint_in_water (sprint in water) bool false
+staminoid.sprint_in_water (sprint in water) bool false
 
 #
-staminoid:sprint_acceleration () float 1.5 0.01
+staminoid.sprint_acceleration () float 1.5 0.01
 
 [exhaustion]
 
 # exhaust player when stamina is below this level
-staminoid:exhaustion_stamina_level (stamina level for exhaustion effect) float 5 0
+staminoid.exhaustion_stamina_level (stamina level for exhaustion effect) float 5 0
 
 # minimum horizontal speed (relative to movement_speed_walk) to drain stamina for moving
-staminoid:exhaust_move_min (min movement speed for exhaustion) float 1.1 0
+staminoid.exhaust_move_min (min movement speed for exhaustion) float 1.1 0
 
 #
-staminoid:exhaust_move_scale (move exhaustion scale) float 0.25 0
+staminoid.exhaust_move_scale (move exhaustion scale) float 0.25 0
 
 # values above 1 create more exhaustion in travelling a distance the faster you're going
-staminoid:exhaust_move_gamma (move exhaustion gamma) float 1.333333333333 0.1
+staminoid.exhaust_move_gamma (move exhaustion gamma) float 1.333333333333 0.1
 
 # stamina drain for jumping
-staminoid:exhaust_jump (jump exhaustion) float 2
+staminoid.exhaust_jump (jump exhaustion) float 2
 
 # stamina drain scale for digging a node
-staminoid:exhaust_dig (dig exhaustion) float 4
+staminoid.exhaust_dig (dig exhaustion) float 4
 
 # stamina drain for placing a node
-staminoid:exhaust_place (place exhaustion) float 1
+staminoid.exhaust_place (place exhaustion) float 1
 
 # stamina drain for punching
-staminoid:exhaust_punch (punch exhaustion) float 1
+staminoid.exhaust_punch (punch exhaustion) float 1
 
 # stamina drain for crafting
-staminoid:exhaust_craft (craft exhaustion) float 1
+staminoid.exhaust_craft (craft exhaustion) float 1
 
 [craft_bungling]
 
@@ -70,7 +70,7 @@ staminoid:exhaust_craft (craft exhaustion) float 1
 # fumble: item is dropped on the floor somewhere near the player
 # fumble_ingredients: contents of the crafting grid are dropped on the ground
 # none: no special action (crafting proceeds as normal)
-staminoid:exhausted_craft_behavior (behavior when crafting while exhausted) enum fumble_ingredients bungle,fumble,fumble_ingredients,none
+staminoid.exhausted_craft_behavior (behavior when crafting while exhausted) enum fumble_ingredients bungle,fumble,fumble_ingredients,none
 
 # chance that the recipe is bungled
-staminoid:craft_bungling_chance (craft bungling chance) float 0.25 0 1
+staminoid.craft_bungling_chance (craft bungling chance) float 0.25 0 1
